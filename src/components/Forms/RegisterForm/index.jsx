@@ -49,7 +49,7 @@ export default () => {
   return (
     <>
       <div>
-        <img src="../../assets/Logo.svg" alt="" />
+        <img src="../../../src/assets/Logo.png" alt="" />
         <Link className="button__secondary" to="/">
           Voltar
         </Link>
@@ -109,7 +109,7 @@ export default () => {
       />
 
       <label className="" htmlFor="">Selecionar Módulo</label>
-      <select className="" onChange={(e) => setCourse__module(e.target.value)}>
+      <select className="select" onChange={(e) => setCourse__module(e.target.value)}>
         <option value="Primeiro">Primeiro Módulo (Introdução ao Frontend)</option>
         <option value="Segundo">Segundo Módulo (Frontend Avançado)</option>
         <option value="Terceiro">Terceiro Módulo (Introdução ao Backend)</option>

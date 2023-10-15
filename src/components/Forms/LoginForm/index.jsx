@@ -42,39 +42,45 @@ export default ({ setUser }) => {
 
   return (
     <>
-    <div className={style.container}>
-      <img src="../../assets./logo.svg" alt="" />
-    </div>
-    <form onSubmit={handleSubmit(submit)}>
-      <h3>Login</h3>
-      <Input
-        label="Email"
-        placeholder="Seu e-mail"
-        type="email"
-        id="email"
-        error={errors.email}
-        {...register("email")}
-      />
+      <div className={style.principal__container}>
+        <div className={style.img__container}>
+          <img src="../../../src/assets/Logo.png" alt="" />
+        </div>
+        <form className={style.form__container}
+          onSubmit={handleSubmit(submit)}>
+          <h3>Login</h3>
+          <div className={style.inputForm__container}>
+            <span>Email</span>
+          <Input
+            placeholder="Seu e-mail"
+            type="email"
+            id="email"
+            error={errors.email}
+            {...register("email")}
+          />
+          </div>
+          <div className={style.inputForm__container}>
+            <span>Senha</span>
+          <Input
+            placeholder="Sua senha"
+            type="password"
+            id="password"
+            error={errors.password}
+            {...register("password")}
+          />
+          </div>
 
-      <Input
-        label="Senha"
-        placeholder="Sua senha"
-        type="password"
-        id="password"
-        error={errors.password}
-        {...register("password")}
-      />
-
-      <div>
-        <button className="button__primary" type="submit" disabled={loading}>
-          Entrar
-        </button>
-        <p>Ainda não possue uma conta?</p>
-        <Link className="link" to="/register">
-          <button className="button__secondary">Cadastrar-se</button>          
-        </Link>
+          <div>
+            <button className="button__primary" type="submit" disabled={loading}>
+              Entrar
+            </button>
+            <p className={style.paragraph__form}>Ainda não possui uma conta?</p>
+            <Link className="link" to="/register">
+              <button className="button__secondary">Cadastrar-se</button>
+            </Link>
+          </div>
+        </form>
       </div>
-    </form>
     </>
   );
 };
