@@ -2,7 +2,8 @@
 @media (max-width: 940px) {
     .button__primary {
         width: 259.902px;
-        height: 38.504px; 
+        height: 38.504px;
+        margin: 15px 0px 15px 0px; 
         border-radius: 4px;
         color: var(--grey-0);
         border: 1.218px solid var(--color-primary-50, #FF427F);
@@ -17,7 +18,8 @@
 
     .button__secondary {
         width: 259.902px;
-        height: 38.504px; 
+        height: 38.504px;
+        margin: 15px 0px 15px 0px;
         border-radius: 4px;
         color: var(--grey-0);
         border: 1.218px solid var(--grey-1, #868E96);
@@ -35,8 +37,9 @@
 
 @media (min-width: 930px) {
     .button__primary {
-        width: 324px;
-        height: 48px; 
+        width: 259.902px;
+        height: 38.504px;
+        margin: 15px 0px 15px 0px;
         border-radius: 4px;
         border: 1.218px solid var(--color-primary-50, #FF427F);
         background: var(--color-primary-50, #FF427F);
@@ -49,8 +52,9 @@
     }
 
     .button__secondary {
-        width: 324px;
-        height: 48px; 
+        width: 259.902px;
+        height: 38.504px;
+        margin: 15px 0px 15px 0px;
         border-radius: 4px;
         color: var(--grey-0);
         border: 1.218px solid var(--grey-1, #868E96);

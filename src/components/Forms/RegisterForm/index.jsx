@@ -5,6 +5,7 @@ import { registerFormSchema } from "./registerForm.schema.js";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../../services";
 import { useState } from "react";
+import style from "./index.module.scss"
 import {
   MdSettingsInputSvideo,
   MdVisibility,
