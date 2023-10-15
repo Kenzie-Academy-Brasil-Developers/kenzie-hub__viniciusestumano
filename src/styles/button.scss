@@ -1,0 +1,25 @@
+.button__primary {
+    border-radius: 4px;
+    color: var(--grey-0);
+    border: 1.218px solid var(--color-primary-50, #FF427F);
+    background: var(--color-primary-50, #FF427F);
+    &:hover {
+        border-radius: 4px;
+        color: var(--grey-0);
+        border: 1.218px solid var(--color-primary, #FF577F);
+        background: var(--color-primary, #FF577F);
+    }
+}
+
+.button__secondary {
+    border-radius: 4px;
+    color: var(--grey-0);
+    background: var(--grey-3, #212529);
+    &:hover{
+        border-radius: 4px;
+        color: var(--grey-0);
+        border: 1.218px solid var(--grey-1, #868E96);
+        background: var(--grey-1, #868E96);
+    }
+
+}
