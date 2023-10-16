@@ -5,9 +5,8 @@ import { registerFormSchema } from "./registerForm.schema.js";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../../services";
 import { useState } from "react";
-import style from "./index.module.scss"
+import style from "./index.module.scss";
 import {
-  MdSettingsInputSvideo,
   MdVisibility,
   MdVisibilityOff,
 } from "react-icons/md";
@@ -22,9 +21,8 @@ export default () => {
     resolver: zodResolver(registerFormSchema),
   });
 
-  const [loading, setLoading] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
-  const [course__module, setCourse__module] = useState("Primeiro");
+  const [course__module, setCourse__module] = useState([]);
 
   const navigate = useNavigate();
 
