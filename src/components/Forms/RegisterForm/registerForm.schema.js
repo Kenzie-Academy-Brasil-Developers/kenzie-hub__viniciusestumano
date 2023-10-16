@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 const registerFormSchema = z
@@ -18,6 +19,8 @@ const registerFormSchema = z
         "É necessário conter pelo menos um caracter especial."
       ),
     confirmPassword: z.string().min(1, "Confirmar a senha é obrigatório."),
+    bio: z.string().min(1, "Adicione algo na bio."),
+    contact: z.string().min(1, "Adicione seu contato."),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "As senhas não correspondem.",

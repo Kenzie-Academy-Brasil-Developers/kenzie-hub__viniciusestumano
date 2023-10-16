@@ -11,6 +11,7 @@ import {
   MdVisibility,
   MdVisibilityOff,
 } from "react-icons/md";
+import { toast } from "react-toastify";
 
 export default () => {
   const {
@@ -32,11 +33,11 @@ export default () => {
       setLoading(true);
       await api.post("/users", payload);
       navigate("/");
-      alert("Cadastro realizado com sucesso!");
+      toast.success("Conta criada com sucesso!");
     } catch (error) {
       console.log(error);
       if (error.response?.data === "Email already exists") {
-        alert("Usuário já cadastrado!");
+        toast.error("Usuário já cadastrado!");
       }
     } finally {
       setLoading(false);

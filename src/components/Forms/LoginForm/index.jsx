@@ -6,6 +6,7 @@ import { loginFormSchema } from "./loginForm.schema.js";
 import { useState } from "react";
 import api from "../../../services";
 import style from "./index.module.scss";
+import { toast } from "react-toastify";
 export default ({ setUser }) => {
   const {
     register,
@@ -29,7 +30,7 @@ export default ({ setUser }) => {
     } catch (error) {
       console.log(error);
       if (error.response?.data === "Incorrect password") {
-        alert("Credenciais inválidas");
+        toast.error("Credenciais inválidas");
       }
     } finally {
       setLoading(false);
