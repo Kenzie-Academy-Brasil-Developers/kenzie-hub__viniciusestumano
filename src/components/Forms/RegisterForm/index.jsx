@@ -7,10 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../../../services";
 import { useState } from "react";
 import style from "./index.module.scss";
-import {
-  MdVisibility,
-  MdVisibilityOff,
-} from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { toast } from "react-toastify";
 
 export default () => {
@@ -18,11 +15,12 @@ export default () => {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
-  } = useForm({
+  } = useForm ({
     resolver: zodResolver(registerFormSchema),
   });
 
   const [isHidden, setIsHidden] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [course__module, setCourse__module] = useState([]);
 
   const navigate = useNavigate();
@@ -47,7 +45,9 @@ export default () => {
   };
 
   const submit = (payload) => {
-    userRegister(payload);
+    const userDataIdRandom = {...payload, id: crypto.randomUUID()}
+    userRegister(userDataIdRandom);
+    console.log(payload);
 
   };
 
@@ -70,8 +70,8 @@ export default () => {
             // label="Nome"
             placeholder="Digite aqui seu nome"
             type="text"
-            error={errors.name}
             {...register("name")}
+            error={errors.name}
           />
 
           <span  className="headline">Email</span>

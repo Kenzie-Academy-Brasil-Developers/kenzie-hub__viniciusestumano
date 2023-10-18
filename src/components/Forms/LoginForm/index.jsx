@@ -24,10 +24,10 @@ export default ({ setUser }) => {
   const userLogin = async (payload) => {
     try {
       setLoading(true);
-      const { data } = await api.post("/users", payload);
+      const { data } = await api.post("/sessions", payload);
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.accessToken);
-      navigate("/user");
+      navigate("/");
     } catch (error) {
       console.log(error);
       if (error.response?.data === "Incorrect password") {
