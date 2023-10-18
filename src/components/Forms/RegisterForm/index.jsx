@@ -1,3 +1,4 @@
+import Logo from "../../../assets/Logo.png";
 import { useForm } from "react-hook-form";
 import Input from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,25 +33,29 @@ export default () => {
       await api.post("/users", payload);
       navigate("/");
       toast.success("Conta criada com sucesso!");
+
     } catch (error) {
       console.log(error);
       if (error.response?.data === "Email already exists") {
         toast.error("Usuário já cadastrado!");
+
       }
     } finally {
       setLoading(false);
+
     }
   };
 
   const submit = (payload) => {
     userRegister(payload);
+
   };
 
   return (
     <>
     <div className={style.registerContainer}>
       <div className={style.header__container}>
-        <img src="../../../src/assets/Logo.png" alt="" />
+        <img src={Logo} alt="" />
         <Link className= {`button__secondary ${style.button__headerRegister}`} to="/">
           Voltar
         </Link>

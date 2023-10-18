@@ -1,3 +1,4 @@
+import Logo from "../../../assets/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,7 +46,7 @@ export default ({ setUser }) => {
     <>
       <div className={style.principal__container}>
         <div className={style.img__container}>
-          <img src="../../../src/assets/Logo.png" alt="" />
+          <img src={Logo} alt="Logo KenzieHube" />
         </div>
         <form className={style.form__container}
           onSubmit={handleSubmit(submit)}>

@@ -1,8 +1,13 @@
 import { DefaultTemplate } from "../../components";
+import Logo from "../../assets/Logo.png";
 
 export default ({ user, userLogout }) => {
   return (
-    <DefaultTemplate user={user} userLogout={userLogout}>
+    <DefaultTemplate img={Logo} user={user} userLogout={userLogout}>
+      <div>
+        img={Logo}
+        <nav>{user} {userLogout}</nav>
+      </div>
       <main className="">
         <div className="">
           <div>

@@ -17,7 +17,7 @@ export default () => {
     <Routes>
       <Route path="/" element={<HomePage setUser={setUser} />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/user" element={<UserPage user={user} userLogout={userLogout} />} />
+      <Route path="/users" element={<UserPage user={user} userLogout={userLogout} />} />
     </Routes>
   );
 };
