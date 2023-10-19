@@ -1,21 +1,28 @@
-import { DefaultTemplate } from "../../components";
 import Logo from "../../assets/Logo.png";
+import { Link } from "react-router-dom";
+import style from "./index.module.scss";
 
 export default ({ user, userLogout }) => {
   return (
-    <DefaultTemplate img={Logo} user={user} userLogout={userLogout}>
-      <div>
-        img={Logo}
-        <nav>{user} {userLogout}</nav>
-      </div>
+    <>
+      <header>
+        <img src={Logo} alt="" />
+        <Link className="link" to="/">
+          <button className={`button__secondary ${style.exit__button}`} onClick={() => userLogout()}>Sair</button>
+        </Link>
+      </header>
+      <nav className={style.userInfo__container} user={user}>
+        <h2 className="title1">Olá, {user?.name}</h2>
+        <p className="paragraph2">{user?.course_module}</p>
+      </nav>
       <main className="">
-        <div className="">
+        <div className={style.main__container}>
           <div>
-            <h2>Que pena! Estamos em desenvolvimento :(</h2>
-            <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+            <h2 className="title1">Que pena! Estamos em desenvolvimento :(</h2>
+            <p className="paragraph">Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
           </div>
         </div>
       </main>
-    </DefaultTemplate>
+    </>
   );
 };

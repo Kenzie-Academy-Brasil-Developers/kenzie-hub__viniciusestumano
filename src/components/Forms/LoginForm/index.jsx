@@ -27,19 +27,25 @@ export default ({ setUser }) => {
       const { data } = await api.post("/sessions", payload);
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.accessToken);
-      navigate("/");
+      navigate("/users");
+
     } catch (error) {
       console.log(error);
+
       if (error.response?.data === "Incorrect password") {
         toast.error("Credenciais inválidas");
+
       }
+
     } finally {
       setLoading(false);
+
     }
   };
 
   const submit = (payload) => {
     userLogin(payload);
+
   };
 
   return (

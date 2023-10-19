@@ -21,7 +21,7 @@ export default () => {
 
   const [isHidden, setIsHidden] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [course__module, setCourse__module] = useState([]);
+  const [course_module, setCourse__module] = useState("Primeiro Módulo (Introdução ao Frontend)");
 
   const navigate = useNavigate();
 
@@ -47,7 +47,6 @@ export default () => {
   const submit = (payload) => {
     const userDataIdRandom = {...payload, id: crypto.randomUUID()}
     userRegister(userDataIdRandom);
-    console.log(payload);
 
   };
 
@@ -122,14 +121,14 @@ export default () => {
             {...register("contact")}
           />
 
-          <label className="headline" htmlFor="">Selecionar Módulo</label>
-          <select className="select" onChange={(e) => setCourse__module(e.target.value)}>
-            <option value="Primeiro">Primeiro Módulo (Introdução ao Frontend)</option>
-            <option value="Segundo">Segundo Módulo (Frontend Avançado)</option>
-            <option value="Terceiro">Terceiro Módulo (Introdução ao Backend)</option>
-            <option value="Quarto">Quarto Módulo (Backend Avançado)</option>
+          <label className="headline">Selecionar Módulo</label>
+          <select className="select" onChange={(e) => setCourse__module(e.target.value)} 
+            {...register("course_module")}>
+            <option value="Primeiro Módulo (Introdução ao Frontend)">Primeiro Módulo (Introdução ao Frontend)</option>
+            <option value="Segundo Módulo (Frontend Avançado)">Segundo Módulo (Frontend Avançado)</option>
+            <option value="Terceiro Módulo (Introdução ao Backend)">Terceiro Módulo (Introdução ao Backend)</option>
+            <option value="Quarto Módulo (Backend Avançado)">Quarto Módulo (Backend Avançado)</option>         
           </select>
-          <input type="hidden" {...register("course__module")} />
           </div>
 
           <div>

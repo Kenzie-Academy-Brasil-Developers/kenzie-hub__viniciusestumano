@@ -19,6 +19,7 @@ const registerFormSchema = z.object({
     confirmPassword: z.string().min(1, "Confirmar a senha é obrigatório."),
     bio: z.string().min(1, "Adicione algo na bio."),
     contact: z.string().min(1, "Adicione seu contato."),
+    course_module: z.string().min(1, "Adicione o módulo."),
   })
   
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
