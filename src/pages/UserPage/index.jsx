@@ -1,8 +1,11 @@
 import Logo from "../../assets/Logo.png";
 import { Link } from "react-router-dom";
 import style from "./index.module.scss";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserContext";
 
-export default ({ user, userLogout }) => {
+export default () => {
+  const { user, userLogout } = useContext(UserContext);
   return (
     <>
       <header>

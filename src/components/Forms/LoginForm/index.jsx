@@ -1,50 +1,29 @@
 import Logo from "../../../assets/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Input from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "./loginForm.schema.js";
-import { useState } from "react";
-import api from "../../../services";
+import { useContext, useState } from "react";
 import style from "./index.module.scss";
-import { toast } from "react-toastify";
-export default ({ setUser }) => {
+import { UserContext } from "../../../providers/UserContext";
+export default () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   });
 
+  const { userLogin } = useContext(UserContext)
+
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
-  const userLogin = async (payload) => {
-    try {
-      setLoading(true);
-      const { data } = await api.post("/sessions", payload);
-      setUser(data.user);
-      localStorage.setItem("@TOKEN", data.accessToken);
-      navigate("/users");
-
-    } catch (error) {
-      console.log(error);
-
-      if (error.response?.data === "Incorrect password") {
-        toast.error("Credenciais inválidas");
-
-      }
-
-    } finally {
-      setLoading(false);
-
-    }
-  };
 
   const submit = (payload) => {
-    userLogin(payload);
+    userLogin(payload, setLoading, reset);
 
   };
 

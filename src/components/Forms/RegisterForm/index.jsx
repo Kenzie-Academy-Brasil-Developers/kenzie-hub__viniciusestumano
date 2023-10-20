@@ -4,11 +4,10 @@ import Input from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerForm.schema.js";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../../../services";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import style from "./index.module.scss";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import { toast } from "react-toastify";
+import { UserContext } from "../../../providers/UserContext";
 
 export default () => {
   const {
@@ -23,30 +22,11 @@ export default () => {
   const [loading, setLoading] = useState(false);
   const [course_module, setCourse__module] = useState("Primeiro Módulo (Introdução ao Frontend)");
 
-  const navigate = useNavigate();
-
-  const userRegister = async (payload) => {
-    try {
-      setLoading(true);
-      await api.post("/users", payload);
-      navigate("/");
-      toast.success("Conta criada com sucesso!");
-
-    } catch (error) {
-      console.log(error);
-      if (error.response?.data === "Email already exists") {
-        toast.error("Usuário já cadastrado!");
-
-      }
-    } finally {
-      setLoading(false);
-
-    }
-  };
+  const { userRegister } = useContext(UserContext);
 
   const submit = (payload) => {
     const userDataIdRandom = {...payload, id: crypto.randomUUID()}
-    userRegister(userDataIdRandom);
+    userRegister(userDataIdRandom, setLoading);
 
   };
 
@@ -91,14 +71,14 @@ export default () => {
             {...register("password")}
           />
           <button className={style.button__icon} onClick={() => setIsHidden(!isHidden)}>
-            {isHidden ? <MdVisibilityOff size={30} /> : <MdVisibility size={30} />}
+            {isHidden ? <MdVisibilityOff size={28} /> : <MdVisibility size={28} />}
           </button>
 
           <span  className="headline">Confirmar senha</span>
           <Input
             // label="Confirmar senha"
             placeholder="Digite novamente sua senha"
-            type="password"
+            type={isHidden ? "password" : "text"}
             error={errors.confirmPassword}
             {...register("confirmPassword")}
           />
