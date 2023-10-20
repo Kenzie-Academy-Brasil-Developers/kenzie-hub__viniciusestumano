@@ -7,6 +7,7 @@ const UserContext = createContext({});
 
 const UserProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
         const token = localStorage.getItem("@TOKEN")
@@ -14,15 +15,19 @@ const UserProvider = ({children}) => {
 
         const getUser = async () => {
             try {
+                setLoading(true);
                 const { data } = await api.get(`/users/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
                 
-                setUser(data)
+                setUser(data);
+                navigate("/users");
             }  catch (error) {
                 console.log(error);
+            } finally {
+                setLoading(false);
             }
         }
 
@@ -35,6 +40,8 @@ const UserProvider = ({children}) => {
       setUser(null);
       navigate("/");
       localStorage.removeItem("@TOKEN");
+      localStorage.removeItem("@USERID");
+      toast.warn("Deslogando...");
     };
 
     const userLogin = async (payload, setLoading, reset) => {
@@ -88,7 +95,7 @@ const UserProvider = ({children}) => {
       };
 
     return (
-        <UserContext.Provider value={{ user, userLogin, userLogout, userRegister }}>
+        <UserContext.Provider value={{ loading, user, userLogin, userLogout, userRegister }}>
         {children}
         </UserContext.Provider>
     )
