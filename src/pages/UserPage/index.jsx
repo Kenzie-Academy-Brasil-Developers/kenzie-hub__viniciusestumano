@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import style from "./index.module.scss";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
+import { TechList } from "../../components/TechList";
 
 export default () => {
   const { user, userLogout } = useContext(UserContext);
@@ -21,8 +22,7 @@ export default () => {
       <main className="">
         <div className={style.main__container}>
           <div>
-            <h2 className="title1">Que pena! Estamos em desenvolvimento :(</h2>
-            <p className="paragraph">Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
+            <TechList />
           </div>
         </div>
       </main>

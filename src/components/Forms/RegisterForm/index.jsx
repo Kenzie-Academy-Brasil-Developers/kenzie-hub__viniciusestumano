@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Input from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerForm.schema.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import style from "./index.module.scss";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
