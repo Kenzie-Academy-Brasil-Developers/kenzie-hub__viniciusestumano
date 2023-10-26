@@ -49,7 +49,7 @@ const UserProvider = ({children}) => {
           setLoading(true);
           const { data } = await api.post("/sessions", payload);
           setUser(data.user);
-          localStorage.setItem("@TOKEN", data.accessToken);
+          localStorage.setItem("@TOKEN", data.token);
           localStorage.setItem("@USERID", data.user.id);
           reset();
           navigate("/users");

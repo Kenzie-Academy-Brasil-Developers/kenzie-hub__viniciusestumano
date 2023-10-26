@@ -7,6 +7,7 @@ import { TechList } from "../../components/TechList";
 
 export default () => {
   const { user, userLogout } = useContext(UserContext);
+
   return (
     <>
       <header>
