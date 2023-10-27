@@ -9,10 +9,11 @@ import style from "./index.module.scss";
 
 
 export const TechList = () => {
-    const { techList } = useContext(TechContext);
+    const { techList  } = useContext(TechContext);
     const { user } = useContext(UserContext);
     const [isVisible, setVisible] = useState(false);
     const [userTechList, setUserTechList] = useState(user.techs || []);
+
     useEffect(() => { 
         setUserTechList([...userTechList, ...techList])
     },[techList]);
@@ -31,7 +32,7 @@ export const TechList = () => {
                 {
                     userTechList.map((techs) => {
                         return (
-                            <TechCard key={techs.id} techs={techs} />
+                            <TechCard key={techs.id} techs={techs} setVisible={setVisible}/>
                         )
                     })
                 }

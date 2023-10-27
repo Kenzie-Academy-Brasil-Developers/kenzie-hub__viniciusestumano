@@ -11,7 +11,6 @@ export const CreateTechForm = () =>{
     const { createTech } = useContext(TechContext)
 
     const submit = (formData) => {
-        console.log(formData);
         createTech(formData);
     }
 
