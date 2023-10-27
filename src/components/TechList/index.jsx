@@ -1,32 +1,39 @@
 import { Link } from "react-router-dom"
 import { BsPlusSquare } from "react-icons/bs";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TechContext } from "../../providers/TechContext";
 import { TechCard } from "../TechCard";
 import { UserContext } from "../../providers/UserContext";
 import { CreateTechModal } from "../CreateTechModal";
+import style from "./index.module.scss";
 
 
 export const TechList = () => {
     const { techList } = useContext(TechContext);
     const { user } = useContext(UserContext);
     const [isVisible, setVisible] = useState(false);
-    console.log(user);
+    const [userTechList, setUserTechList] = useState(user.techs || []);
+    useEffect(() => { 
+        setUserTechList([...userTechList, ...techList])
+    },[techList]);
+
     return(
         <div>
-            <div>
+            <div className={style.titleAdd__container}>
                 <h1>Tecnologias</h1>
                 <BsPlusSquare  onClick={() => setVisible(true)} size={28}></BsPlusSquare>
-                <Link className="button__link" to="user/create">Deixar techList</Link>
+                {/* <Link className="button__link" to="user/create">Deixar techList</Link> */}
             </div>
 
             {isVisible? <CreateTechModal setVisible={setVisible}/>: null}
 
-            <ul>
+            <ul className={style.techs__container}>
                 {
-                    techList.map((user) => (
-                        <TechCard key={user.id} user={user} />
-                    ))
+                    userTechList.map((techs) => {
+                        return (
+                            <TechCard key={techs.id} techs={techs} />
+                        )
+                    })
                 }
             </ul>
         </div>

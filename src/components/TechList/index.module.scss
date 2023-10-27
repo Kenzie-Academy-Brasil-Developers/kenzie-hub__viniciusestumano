@@ -1,0 +1,26 @@
+@media (max-width: 940px) {
+    .titleAdd__container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 80%;
+
+    }
+    .techs__container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        width: 80%;
+        height: 456px;
+        overflow:scroll;
+        margin-top: 19px;
+        padding: 2% 1%;
+
+        background-color: var(--grey-3);
+        border-radius: 4px;
+    }
+}
+
+@media (min-width: 930px) {}

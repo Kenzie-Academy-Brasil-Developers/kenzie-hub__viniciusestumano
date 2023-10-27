@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TechContext } from "../../../providers/TechContext";
+import style from "./index.module.scss";
 
 export const CreateTechForm = () =>{
     const [technology, setTechnology] = useState("Iniciante");
@@ -15,7 +16,7 @@ export const CreateTechForm = () =>{
     }
 
     return (
-        <div>
+        <div className={style.modal__container}>
             <div>
                 <form onSubmit={handleSubmit(submit)}>
                     <label htmlFor="language">Nome</label>

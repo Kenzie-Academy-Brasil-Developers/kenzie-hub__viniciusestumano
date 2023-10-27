@@ -8,19 +8,19 @@ export const TechProvider = ({children}) => {
     const { user } = useContext(UserContext);
     const [techList, setTechList] = useState([]); 
   
-    useEffect(() => {
-        const getTechs = async () => {
-            try {
-                const { data } = await api.get("/users")
-                setTechList(data)
-            } catch (error) {
-                console.log(error);
-            }
-        }
+    // useEffect(() => {
+    //     const getTechs = async () => {
+    //         try {
+    //             const { data } = await api.get("/users")
+    //             setTechList(data)
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
 
-        getTechs()
+    //     getTechs()
 
-    }, [])
+    // }, [])
 
 
      const createTech = async (formData) => {
@@ -33,13 +33,13 @@ export const TechProvider = ({children}) => {
                 title: "React",
                 status: "Iniciante"
             }
-            const { data } = await api.post("/users/techs", newTech, {
+            const { data } = await api.post("/users/techs", formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
 
-            setTechList([...techList, data])
+            setTechList([data]);
         } catch (error) {
             console.log(error);
         }

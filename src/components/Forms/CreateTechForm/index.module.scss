@@ -1,0 +1,14 @@
+@media (max-width: 940px) {
+    .modal__container {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+
+        width: 80vh;
+        height: 50%;
+
+    }
+}
+
+@media (min-width: 930px) {}
+

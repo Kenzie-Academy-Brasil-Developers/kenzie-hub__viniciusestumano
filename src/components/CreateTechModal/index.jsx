@@ -1,6 +1,7 @@
 import { MdClose } from "react-icons/md"
 import { CreateTechForm } from "../Forms/CreateTechForm";
 
+
 export const CreateTechModal = ({setVisible}) => {
 
     return (

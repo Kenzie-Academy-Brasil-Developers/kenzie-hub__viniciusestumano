@@ -1,23 +1,24 @@
 import { MdOutlineModeEditOutline, MdVisibility } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import style from "./index.module.scss";
 
-export const TechCard = ({user}) => {
+export const TechCard = ({techs}) => {
     return(
-        <li>
+        <li className={style.techsCard__container}>
             <div>
-                <h2>{user.techs.length > 0 ? user.techs[0].title : "Sem tecnologias"}</h2>
+                <h2>{techs.title}</h2>
             </div>
-            <div>
+            <div className={style.statusTechs__container}>
                 <div>
-                    <span>{user.techs.length > 0 ? user.techs[0].status : "Sem status"}</span>
+                    <span>{techs.status}</span>
                 </div>
-                <div>
+                <div className={style.buttons__container}>
                     <button title="Editar" aria-label="edit">
-                        <MdOutlineModeEditOutline size={28} />
+                        <MdOutlineModeEditOutline size={20} color="white" />
                     </button>
                     <button title="Deletar" aria-label="delet">
-                        <RiDeleteBin6Line size={28} />
+                        <RiDeleteBin6Line size={20} color="white"/>
                     </button>
                     {/* <Link to="" title="Visualizar" aria-label="view">
                         <MdVisibility />

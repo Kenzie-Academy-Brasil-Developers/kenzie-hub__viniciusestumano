@@ -1,0 +1,30 @@
+@media (max-width: 940px) {
+    .techsCard__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 95%;
+        height: 90px;
+        margin: 16px 0px 0px 0px;
+        padding: 13px 17px;
+
+        background-color: var(--grey-4);
+        border-radius: 4px;
+    }
+
+    .statusTechs__container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -10px;
+    }
+
+    .buttons__container {
+        display: flex;
+        align-items: center;
+
+        gap: 6px;
+    }
+}
+
+@media (min-width: 930px) {}
