@@ -9,29 +9,32 @@ const UserProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        const token = localStorage.getItem("@TOKEN")
-        const userId = localStorage.getItem("@USERID")
+    const token = localStorage.getItem("@TOKEN")
+    const userId = localStorage.getItem("@USERID")
 
-        const getUser = async () => {
-            try {
-                setLoading(true);
-                const { data } = await api.get(`/users/${userId}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-                
-                setUser(data);
-                navigate("/users");
-            }  catch (error) {
-                console.log(error);
-            } finally {
-                setLoading(false);
-            }
+    const getUser = async () => {
+        try {
+            setLoading(true);
+            const { data } = await api.get(`/users/${userId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            setUser(data);
+            navigate("/users");
+
+        }  catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
         }
+    }
+    // getUser(); 
 
-        getUser(); 
+    useEffect(()=>{
+      getUser(); 
+      
     }, [])
 
     const navigate = useNavigate();
@@ -95,7 +98,7 @@ const UserProvider = ({children}) => {
       };
 
     return (
-        <UserContext.Provider value={{ loading, user, userLogin, userLogout, userRegister }}>
+        <UserContext.Provider value={{ loading, user, userLogin, userLogout, userRegister, getUser }}>
         {children}
         </UserContext.Provider>
     )

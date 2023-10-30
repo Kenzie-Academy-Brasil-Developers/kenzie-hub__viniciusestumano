@@ -11,7 +11,6 @@ export const TechCard = ({techs}) => {
     const { user } = useContext(UserContext);
     const [isVisible, setVisible] = useState(false);
     const { deleteTech, setEditTech, selectEditTech, editTech } = useContext(TechContext);
-    // console.log(techs, user.id);
 
     return(
         <li className={style.techsCard__container}>
@@ -20,7 +19,7 @@ export const TechCard = ({techs}) => {
             </div>
             <div className={style.statusTechs__container}>
                 <div>
-                    <span>{techs.status}</span>
+                    <span className="paragraph2">{techs.status}</span>
                 </div>
                 <div className={style.buttons__container}>
                 <button onClick={() => setVisible(true)} title="Editar" aria-label="edit">

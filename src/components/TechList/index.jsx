@@ -15,7 +15,7 @@ export const TechList = () => {
     const [userTechList, setUserTechList] = useState(user.techs || []);
 
     useEffect(() => { 
-        setUserTechList([...userTechList, ...techList])
+        setUserTechList([...techList])
     },[techList]);
 
     return(

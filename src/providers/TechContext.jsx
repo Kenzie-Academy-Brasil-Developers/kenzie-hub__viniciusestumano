@@ -6,28 +6,24 @@ import { toast } from "react-toastify";
 export const TechContext = createContext({});
 
 export const TechProvider = ({children}) => {
-    const { user } = useContext(UserContext);
+    const { user, getUser } = useContext(UserContext);
     const [techList, setTechList] = useState([]);
     
     const [editTech, setEditTech] = useState(null);
     
-  
-    // useEffect(() => {
-    //     const getTechs = async () => {
-    //         try {
-    //             const { data } = await api.get("/users")
-    //             setTechList(data)
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
+    const refreshTechs = async () => {
+        setTechList(await user.techs);
+        
+    }
 
-    //     getTechs()
-
-    // }, [])
+    useEffect(() => {
+        refreshTechs();
+      }, [user]);
 
 
      const createTech = async (formData) => {
+        let allTechsList = [...user.techs];
+
         try {
             const token = localStorage.getItem("@TOKEN");
             const userID = localStorage.getItem("@USERID");
@@ -42,8 +38,8 @@ export const TechProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-
-            setTechList([data]);
+            user.techs = [data, ...user.techs];
+            setTechList([...user.techs]);
             toast.success("Tecnologia adicionada.", {
                 position: "top-right",
                 autoClose: 2 * 1000
@@ -61,10 +57,11 @@ export const TechProvider = ({children}) => {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
-            const newTechList = techList.filter(tech => tech.id !== removeID);
-
-            setTechList(newTechList);
+            })   
+            user.techs = user.techs.filter(tech => tech.id !== removeID);
+            console.log(user.techs);
+   
+            setTechList(user.techs);
             toast.success("Exclusão de tecnologia efetuada.", {
                 position: "top-right",
                 autoClose: 2 * 1000
